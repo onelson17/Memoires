@@ -1,6 +1,31 @@
+body {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+    background-color: #F5F7FA;
+}
+
+@media (max-width: 900px) {
+    body {
+        padding: 0 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 0 8px;
+    }
+}
 section {
     display: none;
 }
-.active {
+
+section.active {
     display: block;
+    animation: fadeIn 0.25s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
