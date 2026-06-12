@@ -79,7 +79,7 @@
         justify-content: center;
     }
     .navigation ul li {
-        padding: 10px 14px;
+        padding: 10px 25px;
         min-width: 0;
         flex: 1;
         max-width: 140px;
