@@ -50,11 +50,45 @@
     width: 100%;
     margin-bottom: 16px;
     border-bottom: 1px solid #e0e0e0;
-    border-top: 1px solid #e0e0e0;
     padding-bottom: 12px;
 }
 .setting-item p {
 
     font-size: 22px;
     color: #202124;
+}
+.objectifs {
+    background-color: #FFFFFF;
+    border: 0.5px solid #EFEDE8;
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+    padding: 24px;
+    margin: 24px 0;
+}
+.objectif-box {
+    display:flex;
+    justify-content: space-between;
+    }
+
+.objectifs h2 {
+    font-family: var(--font-title);
+    font-size: 18px;
+    font-weight: 500;
+    color: #1A1A1A;
+    margin: 0 0 20px;
+}
+.objectif-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.streak-brick {
+    flex: 1;
+    height: 10px;
+    background-color:#7b9de6;
+    border-radius: 4px;
+}
+.streak-bar {
+    display: flex;
+    gap: 6px;
 }
