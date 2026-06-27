@@ -14,6 +14,10 @@ export default function router() {
         })
         document.querySelector(`[data-id="${ongletSauvegarde}"]`).classList.add("active")
         target.classList.add("active")
+    } else {
+        const target = document.getElementById("accueil")
+        document.querySelector(`[data-id="accueil"]`).classList.add("active")
+        target.classList.add("active")
     }
 
     nav.forEach((li) => {
