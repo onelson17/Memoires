@@ -26,6 +26,7 @@ export function ajoutLivres() {
         const readPages = document.getElementById("pages").value
 
         const livre = {
+        id: Date.now(),
         titre: bookTitle,
         auteur: authorName,
         pages: readPages
@@ -49,9 +50,18 @@ export function afficherLivres() {
             `<h3>${book.titre}</h3>
             <p>${book.auteur}</p>
             <p>${book.pages}</p>
-            <button>Supprimer</button>`
+            <button data-id="${book.id}">Supprimer</button>`
 
     listeLivres.appendChild(bookItem)
     })
+    listeLivres.addEventListener("click", (event) => {
+        if (event.target.tagName === "BUTTON") { 
+        const deleted = event.target.dataset.id 
+        const livresMAJ = livres.filter((book) => {
+            return book.id !== Number(deleted)
+        })
+        localStorage.setItem("livres", JSON.stringify(livresMAJ))
+        afficherLivres()
+    }})
     
 }
