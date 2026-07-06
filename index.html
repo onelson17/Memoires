@@ -31,21 +31,20 @@
                 <div class="daily-tasks">
                     <form class="task-form">
                         <h2>Lecture et résumer du jour</h2>
-                        <div>
+                        <div class="task-container">
                             <div>
                                 <label for="books-drop">Choisissez votre lecture du jour</label>
                                 <select name="books-drop" id="books-drop">
                                     
                                 </select>
                                 <div>
-                                    <label for="page-x">De la page</label>
-                                    <input type="number" id="page-x">
-                                    <label for="page-y">à la page</label>
-                                    <input type="number" id="page-y">
+                                    <h3>Pages lues</h3>
+                                    <input type="number" id="page-x" placeholder="De la page">
+                                    <input type="number" id="page-y" placeholder="à la page">
                                 </div>
                                 <div>
                                     <label for="resume-title">Titre du résumer</label>
-                                    <input type="text" id="resume-title">
+                                    <input type="text" id="resume-title" placeholder="Donnez un titre à votre résumé">
                                     <textarea name="resumer" id="text-zone"></textarea>
                                     <button type="submit">Valider</button>
                                 </div>
