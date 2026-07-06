@@ -1,3 +1,4 @@
+import { alimenterDropdown } from "./accueil.js"
 export function ajoutLivres() {
     const livres = JSON.parse(localStorage.getItem("livres")) || []
     const modale = document.getElementById("modal-livre")
@@ -29,13 +30,15 @@ export function ajoutLivres() {
         id: Date.now(),
         titre: bookTitle,
         auteur: authorName,
-        pages: readPages
+        pages: readPages,
+        progression: 0
     }
     livres.push(livre)
     localStorage.setItem("livres", JSON.stringify(livres))
     formAddBooks.reset()
     modale.close()
     afficherLivres()
+    alimenterDropdown()
     })
     
 }
@@ -62,6 +65,7 @@ export function afficherLivres() {
         })
         localStorage.setItem("livres", JSON.stringify(livresMAJ))
         afficherLivres()
+        alimenterDropdown()
     }})
     
 }
