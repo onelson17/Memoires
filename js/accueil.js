@@ -61,16 +61,27 @@ export function submitTaskform() {
         }}
 
     taskForm.addEventListener("submit", (event) => {
+        const livres = JSON.parse(localStorage.getItem("livres")) || []
         event.preventDefault()
-    if (!livre.value || !pageX.value || !pageY.value || !title.value || !zoneTexte.value.length >= 20) {
+        if (!livre.value || !pageX.value || !pageY.value || !title.value || zoneTexte.value.length < 20) {
         return
     } 
+        const selectedBook = livres.find((book) => {
+        return book.id === Number(livre.value)
     })
+        selectedBook.progression = pageY.value
+        localStorage.setItem("livres", JSON.stringify(livres))
+
+    })
+
     taskForm.addEventListener("input", (event) => {
         btnCheck()
          })
     livre.addEventListener("change", (event) => {
         btnCheck()
     })
+    
+
+
    
 }
