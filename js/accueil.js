@@ -1,3 +1,5 @@
+
+
 export function alimenterDropdown() {
 const livres = JSON.parse(localStorage.getItem("livres")) || []
 const selectBook = document.getElementById("books-drop")
@@ -20,9 +22,9 @@ pageX.value = "0"
 export function bookSelected() {
     const title = document.getElementById("resume-title")
     const texteArea = document.getElementById("text-zone")
-    const livres = JSON.parse(localStorage.getItem("livres")) || []
     const selectBook = document.getElementById("books-drop")
     selectBook.addEventListener("change", (event) => {
+        const livres = JSON.parse(localStorage.getItem("livres")) || []
         const bookActual = selectBook.value
         const selectedBook = livres.find((book) => {
             return book.id === Number(bookActual)
@@ -72,6 +74,19 @@ export function submitTaskform() {
         selectedBook.progression = pageY.value
         localStorage.setItem("livres", JSON.stringify(livres))
 
+        const carte = {
+            title: title.value,
+            resume: zoneTexte.value,
+            selected: livre.value,
+            readx: pageX.value,
+            ready: pageY.value,
+            id: Date.now(),
+            date: new Date().toLocaleString('fr-FR')
+
+        }
+        const cartes = JSON.parse(localStorage.getItem("cartes")) || []
+        cartes.push(carte)
+        localStorage.setItem("cartes", JSON.stringify(cartes))
     })
 
     taskForm.addEventListener("input", (event) => {
