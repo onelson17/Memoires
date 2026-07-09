@@ -57,6 +57,8 @@ export function submitTaskform() {
     const title = document.getElementById("resume-title")
     const zoneTexte = document.getElementById("text-zone")
     const valider = document.getElementById("btn-submit")
+    const localisation = document.getElementById("localisation")
+
     function btnCheck() {
         if (livre.value && pageY.value && title.value && zoneTexte.value.length >= 20) {
             valider.disabled = false
@@ -83,7 +85,8 @@ export function submitTaskform() {
             readx: pageX.value,
             ready: pageY.value,
             id: Date.now(),
-            date: new Date().toLocaleString('fr-FR')
+            date: new Date().toLocaleString('fr-FR'),
+            localisation: localisation.value
  
         }
         const cartes = JSON.parse(localStorage.getItem("cartes")) || []
