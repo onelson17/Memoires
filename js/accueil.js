@@ -56,8 +56,8 @@ export function submitTaskform() {
     const pageY = document.getElementById("page-y")
     const title = document.getElementById("resume-title")
     const zoneTexte = document.getElementById("text-zone")
+    const valider = document.getElementById("btn-submit")
     function btnCheck() {
-        const valider = document.getElementById("btn-submit")
         if (livre.value && pageY.value && title.value && zoneTexte.value.length >= 20) {
             valider.disabled = false
         } else {
@@ -84,12 +84,16 @@ export function submitTaskform() {
             ready: pageY.value,
             id: Date.now(),
             date: new Date().toLocaleString('fr-FR')
-
+ 
         }
         const cartes = JSON.parse(localStorage.getItem("cartes")) || []
         cartes.push(carte)
         localStorage.setItem("cartes", JSON.stringify(cartes))
         afficherCartes()
+        taskForm.reset()
+        title.disabled = true 
+        zoneTexte.disabled = true
+        valider.disabled = true
     })
 
     taskForm.addEventListener("input", (event) => {
