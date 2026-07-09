@@ -13,6 +13,7 @@
     text-align: center;
     text-transform: uppercase;
 }
-.task-container {
-
+.daily-tasks.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }

@@ -4,6 +4,10 @@ import { alimenterDropdown } from "./accueil.js"
 import { bookSelected } from "./accueil.js"
 import { submitTaskform } from "./accueil.js"
 import { afficherCartes } from "./ecrits.js"
+import { verifDate } from "./accueil.js"
+
+
+
 
 router()
 ajoutLivres()
@@ -12,3 +16,4 @@ alimenterDropdown()
 bookSelected()
 submitTaskform()
 afficherCartes()
+verifDate()

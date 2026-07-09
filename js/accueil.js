@@ -97,6 +97,10 @@ export function submitTaskform() {
         title.disabled = true 
         zoneTexte.disabled = true
         valider.disabled = true
+
+        const lastValidation = new Date().toLocaleDateString('fr-FR')
+        localStorage.setItem("lastValidation", lastValidation)
+        verifDate()
     })
 
     taskForm.addEventListener("input", (event) => {
@@ -105,6 +109,11 @@ export function submitTaskform() {
     livre.addEventListener("change", (event) => {
         btnCheck()
     })
-    
-   
+}
+
+export function verifDate() {
+    const date = localStorage.getItem("lastValidation")
+    if (date === new Date().toLocaleDateString('fr-FR')) {
+        document.querySelector(".daily-tasks").classList.add("disabled")
+    }
 }
