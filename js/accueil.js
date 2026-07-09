@@ -1,3 +1,4 @@
+import { afficherCartes } from "./ecrits.js"
 
 
 export function alimenterDropdown() {
@@ -32,6 +33,7 @@ export function bookSelected() {
         const pageX = document.getElementById("page-x")
         if (bookActual !== "" ) {
         pageX.value = selectedBook.progression
+        document.getElementById("page-y").min = selectedBook.progression
         title.disabled = false
         texteArea.disabled = false
 
@@ -87,6 +89,7 @@ export function submitTaskform() {
         const cartes = JSON.parse(localStorage.getItem("cartes")) || []
         cartes.push(carte)
         localStorage.setItem("cartes", JSON.stringify(cartes))
+        afficherCartes()
     })
 
     taskForm.addEventListener("input", (event) => {
@@ -96,7 +99,5 @@ export function submitTaskform() {
         btnCheck()
     })
     
-
-
    
 }

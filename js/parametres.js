@@ -49,7 +49,7 @@ export function afficherLivres() {
     const livres = JSON.parse(localStorage.getItem("livres")) || []
     livres.forEach((book) => {
         const bookItem = document.createElement("article")
-        bookItem.innerHTML = 
+        bookItem.innerHTML =
             `<h3>${book.titre}</h3>
             <p>${book.auteur}</p>
             <p>${book.pages}</p>
