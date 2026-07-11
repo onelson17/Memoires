@@ -98,6 +98,15 @@ export function submitTaskform() {
         zoneTexte.disabled = true
         valider.disabled = true
 
+        if(Number(selectedBook.progression) >= Number(selectedBook.pages)) {
+            const livresTermine = JSON.parse(localStorage.getItem("livresTermine")) || []
+            livresTermine.push(selectedBook)
+            localStorage.setItem("livresTermine", JSON.stringify(livresTermine))
+            const livresMAJ = livres.filter((book) => book.id !== selectedBook.id)
+            localStorage.setItem("livres", JSON.stringify(livresMAJ))
+            alimenterDropdown()
+        }
+
         const lastValidation = new Date().toLocaleDateString('fr-FR')
         localStorage.setItem("lastValidation", lastValidation)
         verifDate()
