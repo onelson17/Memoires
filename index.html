@@ -54,7 +54,29 @@
                     </form>
                 </div>
                 <div class="free-writting">
-                    
+                    <div class="writting-container">
+                        <h2>Écriture libre</h2>
+                        <form class="writting-form">
+                        
+                            <div class="writtinghead">
+                                <input type="text" id="writting-title" placeholder="Titre du resumer">
+                                <input type="text" id="localisation-free" placeholder="ou écrivez vous ">
+                            </div>
+                            <div contenteditable="true" id="free-texte">
+
+                            </div>
+                            <div class="toolbar">
+                                <button type="button" data-action="bold">Gras</button>
+                                <button type="button" data-action="italic">Italique</button>
+                                <button type="button" data-action="underline">Souligner</button>
+                                <button type="button" data-action="hiliteColor">Surligner</button>
+                                <button type="button" data-action="uppercase">MAJ</button>
+                                <button type="button" data-action="reset">Effacer</button>
+                                <button type="button" data-action="correction">Correction IA</button>
+                                <button type="submit" data-action="submit">Envoyer </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </section>
 
