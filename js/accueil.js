@@ -58,7 +58,7 @@ export function submitTaskform() {
     const zoneTexte = document.getElementById("text-zone")
     const valider = document.getElementById("btn-submit")
     const localisation = document.getElementById("localisation")
-
+    
     function btnCheck() {
         if (livre.value && pageY.value && title.value && zoneTexte.value.length >= 20) {
             valider.disabled = false
@@ -105,6 +105,14 @@ export function submitTaskform() {
             const livresMAJ = livres.filter((book) => book.id !== selectedBook.id)
             localStorage.setItem("livres", JSON.stringify(livresMAJ))
             alimenterDropdown()
+            const toast = document.createElement("div")
+            toast.classList.add("toast")
+            toast.textContent = "Livre terminé!"
+            document.body.appendChild(toast)
+            setTimeout(() => {
+                toast.remove()
+            }, 3000)
+            
         }
 
         const lastValidation = new Date().toLocaleDateString('fr-FR')

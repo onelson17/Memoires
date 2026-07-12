@@ -17,3 +17,15 @@
     opacity: 0.5;
     pointer-events: none;
 }
+.toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1C1C1E;
+    color: #ffffff;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    z-index: 1000;
+}
