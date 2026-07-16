@@ -165,17 +165,25 @@ export function verifDate() {
                 break
 
                 case "hiliteColor":
-                    document.execCommand("hiliteColor", false, "yellow")
+                    const btnHighlight = event.target
+                    if (btnHighlight.dataset.active === "true") {
+                        document.execCommand("hiliteColor", false, "transparent")
+                        btnHighlight.dataset.active = "false"
+                    } else {
+                        document.execCommand("hiliteColor", false, "yellow")
+                        btnHighlight.dataset.active = "true"
+                    }
                 break
 
                 case "uppercase": 
-                    const selection = window.getSelection()
-                        if (selection.rangeCount > 0) {
-                            const range = selection.getRangeAt(0)
-                            const text = range.toString().toUpperCase()
-                            range.deleteContents()
-                            range.insertNode(document.createTextNode(text))
-                        }
+                        const selection = window.getSelection()
+                            if (selection.rangeCount > 0) {
+                                const range = selection.getRangeAt(0)
+                                const text = range.toString()
+                                const newText = text === text.toUpperCase() ? text.toLowerCase() : text.toUpperCase()
+                                range.deleteContents()
+                                range.insertNode(document.createTextNode(newText))
+                            }
                 break 
 
                 case "reset":
@@ -197,11 +205,16 @@ export function verifDate() {
                 break
 
                 case "submit":
+
+                    if (titleLibre.value === ""){
+                        return
+                    }
+                    const localisation = localisationLibre.value === "" ? "Quelque part" : localisationLibre.value
                     const freeCard = {
                         title: titleLibre.value,
                         texte: texteLibre.innerText,
                         date: new Date().toLocaleDateString('fr-FR'),
-                        localisation: localisationLibre.value,
+                        localisation: localisation,
                         type:"libre",
                         id: Date.now()
                     }
