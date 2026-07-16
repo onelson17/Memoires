@@ -19,7 +19,7 @@ livres.forEach((book) => {
 });
 pageX.value = "0"
 }
-// REMPLISSAGE DU DROP DOWN - AFFIACHE DE LA PROGRESSION DE LECTURE - DISABLED UNIQUEMENT SI LIVRE SELECTIONNÉ // 
+// REMPLISSAGE DU DROP DOWN - AFFICHAGE DE LA PROGRESSION DE LECTURE - DISABLED UNIQUEMENT SI LIVRE SELECTIONNÉ // 
 export function bookSelected() {
     const title = document.getElementById("resume-title")
     const texteArea = document.getElementById("text-zone")
@@ -134,3 +134,90 @@ export function verifDate() {
         document.querySelector(".daily-tasks").classList.add("disabled")
     }
 }
+
+    export function ecritureLibre() {
+        const texteLibre = document.getElementById("free-texte")
+        const titleLibre = document.getElementById("writting-title")
+        const localisationLibre = document.getElementById("localisation-free")
+        const toolBar = document.querySelector(".toolbar")
+
+        texteLibre.addEventListener("focus", (event) => {
+            texteLibre.classList.add("fullscreen")
+            toolBar.classList.add("toolbar-active")
+        })
+        texteLibre.addEventListener("blur", (event) => {
+            texteLibre.classList.remove("fullscreen")
+        })
+        toolBar.addEventListener("click", async (event) => {
+           if (event.target.tagName === "BUTTON") {
+            const action = event.target.dataset.action
+            switch(action) {
+                case "bold":
+                    document.execCommand("bold")
+                break
+
+                case "italic":
+                    document.execCommand("italic")
+                break
+                
+                case "underline": 
+                    document.execCommand("underline")
+                break
+
+                case "hiliteColor":
+                    document.execCommand("hiliteColor", false, "yellow")
+                break
+
+                case "uppercase": 
+                    const selection = window.getSelection()
+                        if (selection.rangeCount > 0) {
+                            const range = selection.getRangeAt(0)
+                            const text = range.toString().toUpperCase()
+                            range.deleteContents()
+                            range.insertNode(document.createTextNode(text))
+                        }
+                break 
+
+                case "reset":
+                    texteLibre.innerHTML = ""
+                break
+
+                case "correction":
+                    const response = await fetch("https://api.anthropic.com/v1/messages", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            model: "claude-sonnet-4-6",
+                            max_tokens: 1000,
+                            messages: [{ role: "user", content: `Corrige ce texte sans changer le sens : ${texteLibre.innerText}` }]
+                        })
+                    })
+                    const data = await response.json()
+                    texteLibre.innerText = data.content[0].text
+                break
+
+                case "submit":
+                    const freeCard = {
+                        title: titleLibre.value,
+                        texte: texteLibre.innerText,
+                        date: new Date().toLocaleDateString('fr-FR'),
+                        localisation: localisationLibre.value,
+                        type:"libre",
+                        id: Date.now()
+                    }
+                    const cartes = JSON.parse(localStorage.getItem("cartes")) || []
+                    cartes.push(freeCard)
+                    localStorage.setItem("cartes", JSON.stringify(cartes))
+                    afficherCartes()
+                    titleLibre.value =""
+                    texteLibre.innerHTML =""
+                    localisationLibre.value = ""
+                    texteLibre.classList.remove("fullscreen")
+                break
+            }
+           }
+        })
+        toolBar.addEventListener("mousedown", (event) => {
+                event.preventDefault()
+            })
+    }

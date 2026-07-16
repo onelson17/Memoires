@@ -5,7 +5,7 @@ import { bookSelected } from "./accueil.js"
 import { submitTaskform } from "./accueil.js"
 import { afficherCartes } from "./ecrits.js"
 import { verifDate } from "./accueil.js"
-
+import { ecritureLibre } from "./accueil.js"
 
 
 
@@ -17,3 +17,4 @@ bookSelected()
 submitTaskform()
 afficherCartes()
 verifDate()
+ecritureLibre()
