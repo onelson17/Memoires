@@ -6,7 +6,8 @@ import { submitTaskform } from "./accueil.js"
 import { afficherCartes } from "./ecrits.js"
 import { verifDate } from "./accueil.js"
 import { ecritureLibre } from "./accueil.js"
-
+import { majdDashboard } from "./parametres.js"
+import { showToast } from "./utils.js"
 
 
 router()
@@ -18,3 +19,5 @@ submitTaskform()
 afficherCartes()
 verifDate()
 ecritureLibre()
+majdDashboard()
+showToast()

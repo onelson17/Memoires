@@ -1,13 +1,6 @@
 import { afficherCartes } from "./ecrits.js"
-
-// FONCTION UTILITAIRE - AFFICHAGE D'UN TOAST DE NOTIFICATION //
-function showToast(message) {
-    const toast = document.createElement("div")
-    toast.classList.add("toast")
-    toast.textContent = message
-    document.body.appendChild(toast)
-    setTimeout(() => toast.remove(), 3000)
-}
+import { showToast } from "./utils.js"
+import { majdDashboard } from "./parametres.js"
 
 // ALIMENTATION DU DROPDOWN AVEC LES LIVRES DU LOCALSTORAGE //
 export function alimenterDropdown() {
@@ -125,11 +118,14 @@ export function submitTaskform() {
         const lastValidation = new Date().toLocaleDateString('fr-FR')
         localStorage.setItem("lastValidation", lastValidation)
         verifDate()
+        const jetons = Number(localStorage.getItem("jetons") || 0) + 1
+        localStorage.setItem("jetons", jetons)
+        majdDashboard()
     })
-
-    taskForm.addEventListener("input", () => btnCheck())
-    livre.addEventListener("change", () => btnCheck())
-}
+    
+        taskForm.addEventListener("input", () => btnCheck())
+        livre.addEventListener("change", () => btnCheck())
+    }
 
 // VÉRIFICATION DE LA DATE - DISABLED 24H APRÈS VALIDATION //
 export function verifDate() {
