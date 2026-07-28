@@ -123,7 +123,7 @@
 
             </div>
 
-            <div class="objectifs">
+            <div class="objectifs" style="display: none;">
                 <h2>Objectifs</h2>
                 <div class="objectif-item">
                      <div class="objectif-box">
@@ -172,10 +172,6 @@
                 <div class="book-list">
                     
                 </div>
-                <div class="setting-item">
-                    <p>Supprimez un écrit de votre collection Mémoires</p>
-                    <button>Supprimer</button>
-                </div>
                 
                 <div class="setting-item">
                     <p>Exporter votre mémoire</p>
@@ -208,6 +204,12 @@
                 <button type="button" id="cancel">Annuler</button>
             </div>
         </form>
+    </dialog>
+    
+    <dialog id="modal-confirm">
+        <p>Êtes-vous sûr de vouloir supprimer cet écrit ?</p>
+        <button id="delete-confirm">Confirmer</button>
+        <button id="delete-cancel">Annuler</button>
     </dialog>
 </body>
 </html>

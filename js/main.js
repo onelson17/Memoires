@@ -8,6 +8,7 @@ import { verifDate } from "./accueil.js"
 import { ecritureLibre } from "./accueil.js"
 import { majdDashboard } from "./parametres.js"
 import { showToast } from "./utils.js"
+import { initCartes } from "./ecrits.js"
 
 
 router()
@@ -21,3 +22,4 @@ verifDate()
 ecritureLibre()
 majdDashboard()
 showToast()
+initCartes()
