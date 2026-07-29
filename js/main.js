@@ -9,6 +9,7 @@ import { ecritureLibre } from "./accueil.js"
 import { majdDashboard } from "./parametres.js"
 import { showToast } from "./utils.js"
 import { initCartes } from "./ecrits.js"
+import { initAccordion } from "./accueil.js"
 
 
 router()
@@ -23,3 +24,4 @@ ecritureLibre()
 majdDashboard()
 showToast()
 initCartes()
+initAccordion()

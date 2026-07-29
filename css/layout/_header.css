@@ -1,11 +1,9 @@
 .header-nav {
-    margin-top: 5px;
     display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    padding: 30px 17px 0;
-    background-color: #143479;
-    border-radius: 12px 12px 2px 2px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 17px 0;
+    background-color: #221D1C;
 }
 .logo-link {
     text-decoration: none;

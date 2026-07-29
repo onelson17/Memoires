@@ -29,6 +29,7 @@
     <main>
             <section id="accueil" class="accueil">
                 <div class="daily-tasks">
+                   <div class="task-content">
                     <form class="task-form">
                         <h2>Lecture et résumer du jour</h2>
                         <div class="task-container">
@@ -52,8 +53,20 @@
                             </div>
                         </div>
                     </form>
+                   </div>
+                   <div class="task-header">
+                        <button class="task-toggle">
+                            
+                                <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="8 4 12 8 16 4"></polyline>
+                                    <polyline points="6 10 12 16 18 10"></polyline>
+                                </svg>
+
+                        </button>
+                    
+                    </div>
                 </div>
-                <div class="free-writting">
+                <div class="free-writting" style="display: none;">
                     <div class="writting-container">
                         <h2>Écriture libre</h2>
                         <form class="writting-form">

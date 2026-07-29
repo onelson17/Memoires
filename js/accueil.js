@@ -251,3 +251,16 @@ export function ecritureLibre() {
         }
     })
 }
+export function initAccordion() {
+    const toggle = document.querySelector(".task-toggle")
+    const content = document.querySelector(".task-content")
+    toggle.addEventListener("click", (event) => {
+        if (content.style.maxHeight === "0" || content.style.maxHeight === "0px") {
+            content.style.maxHeight = content.scrollHeight + "px"
+            toggle.classList.add("open")
+        } else {
+            content.style.maxHeight = "0px"
+            toggle.classList.remove("open")
+        }
+    })
+}
