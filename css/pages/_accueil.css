@@ -19,6 +19,10 @@
     opacity: 0.5;
     pointer-events: none;
 }
+.daily-tasks.validated {
+    opacity: 0.85;
+    pointer-events: none;
+}
 .toast {
     position: fixed;
     bottom: 32px;
@@ -83,11 +87,17 @@
     pointer-events: none;
     overflow: visible;
 }
+.task-toggle svg .checkmark {
+    display: none;
+}
 .task-toggle {
+    --glow-shadow: 0 4px 14px rgba(19, 80, 124, 0.25);
+    --glow-ring: rgba(19, 80, 124, 0.3);
+    --glow-ring-fade: rgba(19, 80, 124, 0);
     position: absolute;
-    bottom: -24px; 
+    bottom: -24px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(1);
     width: 37px;
     height: 37px;
     border-radius: 50%;
@@ -97,30 +107,49 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    animation: pulse 2s ease-in-out infinite;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #F5F5F5;
+    box-shadow: var(--glow-shadow);
+    animation: pulse-glow 2.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
 }
 .task-toggle:hover {
-    box-shadow: 0 6px 20px rgba(34, 29, 28, 0.2);
+    box-shadow: 0 8px 22px rgba(19, 80, 124, 0.35);
     transform: translateX(-50%) scale(1.1);
-    animation: none;
+    animation-play-state: paused;
+}
+.task-toggle:active {
+    transform: translateX(-50%) scale(0.96);
 }
 
-@keyframes pulse {
-    0%, 100% { 
-        transform: translateX(-50%) scale(1);
-        box-shadow: 0 8px 24px rgba(34, 29, 28, 0.15);
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: var(--glow-shadow), 0 0 0 0 var(--glow-ring);
     }
-    50% { 
-        transform: translateX(-50%) scale(1.08);
-        box-shadow: 0 8px 24px rgba(34, 29, 28, 0.4);
-     }
+    50% {
+        box-shadow: var(--glow-shadow), 0 0 0 8px var(--glow-ring-fade);
+    }
 }
 
 .task-toggle.open {
-    transform: translateX(-50%) rotate(180deg);
+    transform: translateX(-50%) scale(1) rotate(180deg);
     animation: none;
+}
+
+.task-toggle.validated {
+    background: #B4B4B4;
+    cursor: not-allowed;
+    animation: none;
+    box-shadow: none;
+}
+.task-toggle.validated:hover {
+    box-shadow: none;
+    transform: translateX(-50%) scale(1);
+}
+.task-toggle.validated svg .chevrons {
+    display: none;
+}
+.task-toggle.validated svg .checkmark {
+    display: block;
 }
 
 #text-zone {
@@ -183,10 +212,39 @@
     flex: 1;
 }
 #btn-submit {
+    --glow-shadow: none;
+    --glow-ring: rgba(101, 164, 143, 0);
+    --glow-ring-fade: rgba(101, 164, 143, 0);
     width: auto;
     align-self: flex-end;
     padding: 10px 24px;
     margin-top: auto;
+    border: none;
+    border-radius: 8px;
+    background: rgba(34, 29, 28, 0.15);
+    color: rgba(34, 29, 28, 0.4);
+    font-size: 15px;
+    cursor: not-allowed;
+    box-shadow: var(--glow-shadow);
+    transform: scale(1);
+    transition: background-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+#btn-submit:not(:disabled) {
+    --glow-shadow: 0 4px 14px rgba(101, 164, 143, 0.3);
+    --glow-ring: rgba(101, 164, 143, 0.35);
+    --glow-ring-fade: rgba(101, 164, 143, 0);
+    background: #65A48F;
+    color: #F5F5F5;
+    cursor: pointer;
+    animation: pulse-glow 2.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+#btn-submit:not(:disabled):hover {
+    box-shadow: 0 8px 22px rgba(101, 164, 143, 0.4);
+    transform: scale(1.05);
+    animation-play-state: paused;
+}
+#btn-submit:not(:disabled):active {
+    transform: scale(0.96);
 }
 .inputs select,
 .inputs input {
@@ -207,6 +265,37 @@
     outline: none;
     border-color: rgba(34, 29, 28, 0.4);
     box-shadow: 
+        inset 0 2px 8px rgba(34, 29, 28, 0.06),
+        0 0 0 3px rgba(34, 29, 28, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.textzone-container div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+.textzone-container label {
+    height: 44px;
+    flex: 1;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+#resume-title {
+    height: 44px;
+    flex: 1;
+    padding: 0 14px;
+    border: 1px solid rgba(34, 29, 28, 0.2);
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+#resume-title:focus {
+    outline: none;
+    border-color: rgba(34, 29, 28, 0.4);
+    box-shadow:
         inset 0 2px 8px rgba(34, 29, 28, 0.06),
         0 0 0 3px rgba(34, 29, 28, 0.1);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;

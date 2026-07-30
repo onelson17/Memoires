@@ -118,6 +118,15 @@ export function submitTaskform() {
         const lastValidation = new Date().toLocaleDateString('fr-FR')
         localStorage.setItem("lastValidation", lastValidation)
         verifDate()
+
+        // ÉTAT VALIDÉ DU TOGGLE //
+        const content = document.querySelector(".task-content")
+        const toggle = document.querySelector(".task-toggle")
+        content.style.maxHeight = "0px"
+        toggle.classList.remove("open")
+        toggle.classList.add("validated")
+        document.querySelector(".daily-tasks").classList.add("validated")
+
         const jetons = Number(localStorage.getItem("jetons") || 0) + 1
         localStorage.setItem("jetons", jetons)
         majdDashboard()
@@ -255,7 +264,7 @@ export function initAccordion() {
     const toggle = document.querySelector(".task-toggle")
     const content = document.querySelector(".task-content")
     toggle.addEventListener("click", (event) => {
-        if (content.style.maxHeight === "0" || content.style.maxHeight === "0px") {
+        if (!content.style.maxHeight || content.style.maxHeight === "0px") {
             content.style.maxHeight = content.scrollHeight + "px"
             toggle.classList.add("open")
         } else {
