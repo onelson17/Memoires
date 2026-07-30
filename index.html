@@ -31,26 +31,36 @@
                 <div class="daily-tasks">
                    <div class="task-content">
                     <form class="task-form">
-                        <h2>Lecture et résumer du jour</h2>
                         <div class="task-container">
-                            <div>
-                                <label for="books-drop">Choisissez votre lecture du jour</label>
-                                <select name="books-drop" id="books-drop">
-                                </select>
+
+                            <div class="textzone-container">
+                                <textarea name="resumer" id="text-zone" disabled></textarea>
                                 <div>
-                                    <h3>Pages lues</h3>
-                                    <input type="number" id="page-x" disabled>
-                                    <input type="number" id="page-y" placeholder="à la page">
+                                        <label for="resume-title" >Titre du résumer</label>
+                                        <input type="text" disabled id="resume-title" placeholder="Donnez un titre à votre résumé">
                                 </div>
-                                <div>
-                                    <label for="localisation">Où écrivez-vous aujourd'hui ?</label>
-                                    <input type="text" id="localisation" placeholder="New York, bibliothèque...">
-                                    <label for="resume-title" >Titre du résumer</label>
-                                    <input type="text" disabled id="resume-title" placeholder="Donnez un titre à votre résumé">
-                                    <textarea name="resumer" id="text-zone" disabled></textarea>
-                                    <button type="submit" disabled id="btn-submit">Valider</button>
-                                </div>
+                            </div>                                
+                            <div class="form-container">
+                                    <h2>Lecture et résumer du jour</h2>
+                                    <div class="form-content">
+                                        <div class="labels">
+                                            <label for="books-drop">Choisissez votre lecture du jour</label>
+                                            <label for="page-y">Pages lues</label>
+                                            <label for="localisation">Vous écrivez depuis</label>
+                                        </div>
+                                    
+                                        <div class="inputs">
+                                            <select name="books-drop" id="books-drop"></select>
+                                            <div>
+                                                <input type="number" id="page-x" disabled>
+                                                <input type="number" id="page-y" placeholder="à la page">
+                                            </div>
+                                            <input type="text" id="localisation" placeholder="New York, bibliothèque...">
+                                        </div>
+                                    </div>
+                                        <button type="submit" disabled id="btn-submit">Valider</button>
                             </div>
+                                   
                         </div>
                     </form>
                    </div>
