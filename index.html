@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mémoires</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main.js" type="module"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header-nav">
+        <a href="index.html" class="logo-link">
+            <h1 class="logo">MÉMOIRES</h1>
+        </a>
+
+        <nav class="navigation">
+            <ul>
+                <li data-id="accueil" ><a>Accueil</a></li>
+                <li data-id="memoires"><a>Mémoires</a></li>
+                <li style="display: none;" data-id="inspirations"><a>Inspirations</a></li>
+                <li data-id="parametres"><a>Paramètres</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+            <section id="accueil" class="accueil">
+                <div class="daily-tasks">
+                   <div class="task-content">
+                    <form class="task-form">
+                        <div class="task-container">
+
+                            <div class="textzone-container">
+                                <textarea name="resumer" id="text-zone" disabled></textarea>
+                                <div>
+                                        <label for="resume-title" >Titre du résumer</label>
+                                        <input type="text" disabled id="resume-title" placeholder="Donnez un titre à votre résumé">
+                                </div>
+                            </div>                                
+                            <div class="form-container">
+                                    <h2>Lecture et résumer du jour</h2>
+                                    <div class="form-content">
+                                        <div class="labels">
+                                            <label for="books-drop">Choisissez votre lecture du jour</label>
+                                            <label for="page-y">Pages lues</label>
+                                            <label for="localisation">Vous écrivez depuis</label>
+                                        </div>
+                                    
+                                        <div class="inputs">
+                                            <select name="books-drop" id="books-drop"></select>
+                                            <div>
+                                                <input type="number" id="page-x" disabled>
+                                                <input type="number" id="page-y" placeholder="à la page">
+                                            </div>
+                                            <input type="text" id="localisation" placeholder="New York, bibliothèque...">
+                                        </div>
+                                    </div>
+                                        <button type="submit" disabled id="btn-submit">Valider</button>
+                            </div>
+                                   
+                        </div>
+                    </form>
+                   </div>
+                   <div class="task-header">
+                        <button class="task-toggle">
+                            
+                                <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="8 4 12 8 16 4"></polyline>
+                                    <polyline points="6 10 12 16 18 10"></polyline>
+                                </svg>
+
+                        </button>
+                    
+                    </div>
+                </div>
+                <div class="free-writting" style="display: none;">
+                    <div class="writting-container">
+                        <h2>Écriture libre</h2>
+                        <form class="writting-form">
+                        
+                            <div class="writtinghead">
+                                <input type="text" id="writting-title" placeholder="Titre du resumer">
+                                <input type="text" id="localisation-free" placeholder="ou écrivez vous ">
+                            </div>
+                            <div contenteditable="true" id="free-texte">
+
+                            </div>
+                            <div class="toolbar">
+                                <button type="button" data-action="bold">Gras</button>
+                                <button type="button" data-action="italic">Italique</button>
+                                <button type="button" data-action="underline">Souligner</button>
+                                <button type="button" data-action="hiliteColor">Surligner</button>
+                                <button type="button" data-action="uppercase">MAJ</button>
+                                <button type="button" data-action="reset">Effacer</button>
+                                <button style="display: none;" type="button" data-action="correction">Correction IA</button>
+                                <button type="button" data-action="submit">Envoyer </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+        <section id="memoires">
+            <div class="card-container">
+            
+            </div>
+        </section>
+
+        <section style="display: none;" id="inspirations">
+
+        </section>
+
+        <section id="parametres">
+            <div class="dashboard">
+                <div class="dashboard-item">
+                    <img src="assets/icons/notebook-text.svg" alt="Pages lues">
+                    <p class="dashboard-label">Pages lues</p>
+                    <p data-stat="pages" class="dashboard-value">0</p>
+                </div>
+
+                <div class="dashboard-item">
+                    <img src="assets/icons/library-big.svg" alt="Livres terminés">
+                    <p class="dashboard-label">Livres terminés</p>
+                    <p data-stat="livres" class="dashboard-value">0</p>
+                </div>
+
+                <div class="dashboard-item">
+                    <img src="assets/icons/brain.svg" alt="Pensées écrites">
+                    <p class="dashboard-label">Pensées écrites</p>
+                    <p data-stat="pensee" class="dashboard-value">0</p>
+                </div>
+                <div class="dashboard-item">
+                    <img src="assets/icons/circle-star.svg" alt="Jetons collectées">
+                    <p class="dashboard-label">Jetons collectés</p>
+                    <p data-stat="jetons" class="dashboard-value">0</p>
+                </div>
+
+                <div class="dashboard-item">
+                    <img src="assets/icons/trophy.svg" alt="Trophés collectés">
+                    <p class="dashboard-label">Trophées collectés</p>
+                    <p data-stat="trophee" class="dashboard-value">0</p>
+                </div>
+
+            </div>
+
+            <div class="objectifs" style="display: none;">
+                <h2>Objectifs</h2>
+                <div class="objectif-item">
+                     <div class="objectif-box">
+                        <p>Définir un objectif d'assiduité</p>
+                        <button>Définir</button>
+                    </div>
+                    <div class="streak-bar">
+                        
+                        <div class="streak-brick">
+                            
+                        </div>
+                        <div class="streak-brick">
+
+                        </div>
+                        <div class="streak-brick">
+
+                        </div>
+                        <div class="streak-brick">
+
+                        </div>
+                        <div class="streak-brick">
+
+                        </div>
+                        <div class="streak-brick">
+                            
+                        </div>
+                        <div class="streak-brick">
+
+                        </div>
+                    </div>
+            
+                   
+                </div>
+            </div>
+
+            <div class="settings">
+                <h2>Paramètres</h2>
+                <div class="setting-item">
+                    <p>Ajoutez un livre à votre liste de lecture</p>
+                    <button id="add-book">Ajouter</button>
+                </div>
+                <div class="setting-item">
+                    <p>Retirez un livre de votre liste de lecture</p>
+                    <button>Retirer</button>
+                </div>
+                <div class="book-list">
+                    
+                </div>
+                
+                <div class="setting-item">
+                    <p>Exporter votre mémoire</p>
+                    <button>Exporter</button>
+                </div>
+                <div class="setting-item">
+                    <p>Choisissez l'apparence de votre interface</p>
+                    <button>Mode clair / Mode sombre</button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    
+    <dialog id="modal-livre">
+        <h2>Ajouter un livre</h2>
+        <form id="modal-form">
+
+            <label for="titre">Titre du livre</label>
+            <input type="text" id="titre">
+
+            <label for="auteur">Auteur</label>
+            <input type="text" id="auteur">
+
+            <label for="pages">Nombre de pages</label>
+            <input type="number" id="pages">
+
+            <div>
+                <button type="submit">Valider</button>
+                <button type="button" id="cancel">Annuler</button>
+            </div>
+        </form>
+    </dialog>
+    
+    <dialog id="modal-confirm">
+        <p>Êtes-vous sûr de vouloir supprimer cet écrit ?</p>
+        <button id="delete-confirm">Confirmer</button>
+        <button id="delete-cancel">Annuler</button>
+    </dialog>
+</body>
+</html>
