@@ -119,13 +119,11 @@ export function submitTaskform() {
         localStorage.setItem("lastValidation", lastValidation)
         verifDate()
 
-        // ÉTAT VALIDÉ DU TOGGLE //
+        // FERMETURE DU VOLET APRÈS VALIDATION //
         const content = document.querySelector(".task-content")
         const toggle = document.querySelector(".task-toggle")
         content.style.maxHeight = "0px"
         toggle.classList.remove("open")
-        toggle.classList.add("validated")
-        document.querySelector(".daily-tasks").classList.add("validated")
 
         const jetons = Number(localStorage.getItem("jetons") || 0) + 1
         localStorage.setItem("jetons", jetons)
@@ -139,8 +137,16 @@ export function submitTaskform() {
 // VÉRIFICATION DE LA DATE - DISABLED 24H APRÈS VALIDATION //
 export function verifDate() {
     const date = localStorage.getItem("lastValidation")
+    const dailyTasks = document.querySelector(".daily-tasks")
+    const toggle = document.querySelector(".task-toggle")
+
     if (date === new Date().toLocaleDateString('fr-FR')) {
-        document.querySelector(".daily-tasks").classList.add("disabled")
+        dailyTasks.classList.add("disabled")
+        dailyTasks.classList.add("validated")
+        toggle.classList.add("validated")
+    } else {
+        dailyTasks.classList.remove("disabled", "validated")
+        toggle.classList.remove("validated")
     }
 }
 
